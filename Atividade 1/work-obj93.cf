@@ -1,0 +1,4 @@
+v 4
+file . "reg.vhd" "76e2bb53c85cda7736ea3c14e94ceb0c3a7f2a39" "20211006221233.681":
+  entity reg at 1( 0) + 0 on 13;
+  architecture arch of reg at 11( 328) + 0 on 14;
