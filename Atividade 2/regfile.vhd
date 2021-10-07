@@ -34,14 +34,14 @@ architecture arch_regfile of regfile is
 	type mem_tipo is array(0 to regn-1) of bit_vector(wordSize-1 downto 0);
 	signal saidas: mem_tipo; --saida de cada reg 
 	signal loadVector: bit_vector(0 to regn-1); --vetor com os sinais de load de cada reg
-	signal dVector: mem_tipo;
+	--signal dVector: mem_tipo;
 	
 	signal int_wr: integer;
 	signal int_rr1: integer;
 	signal int_rr2: integer;
 begin
 	cria_regs: for i in 0 to regn-1 generate
-		regs: reg generic map(wordSize) port map(clock, reset, loadVector(i), dVector(i), saidas(i));
+		regs: reg generic map(wordSize) port map(clock, reset, loadVector(i), d, saidas(i));
 	end generate;
 	
 	int_wr <= to_integer(unsigned(wr));
@@ -52,7 +52,6 @@ begin
 	begin
 		if clock = '1' and clock'event then
 			loadVector <= (others => '0');
-			dVector(int_wr) <= d;
 			if int_wr /= regn-1 then
 				loadVector(int_wr) <= regWrite;
 			end if;
