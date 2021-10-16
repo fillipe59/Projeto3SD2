@@ -12,7 +12,6 @@ entity regfile is
 		clock        : in  bit; --! entrada de clock
 		reset        : in  bit; --! clear assincrono
 		regWrite     : in  bit; --! write enable
-		--! entradas de endereco para leitura (rr1 e rr2) e de escrita (wr)
 		rr1, rr2, wr : in  bit_vector(natural(ceil(log2(real(regn))))-1 downto 0);
 		d            : in  bit_vector(wordSize-1 downto 0); --! entrada para escrita
 		q1, q2       : out bit_vector(wordSize-1 downto 0)  --! saidas	
@@ -21,10 +20,11 @@ end regfile;
 
 architecture arch_regfile of regfile is
 	type mem_tipo is array(0 to regn-1) of bit_vector(wordSize-1 downto 0);
-	signal regs: mem_tipo; --registradores
-	
+	signal regs: mem_tipo; --registradores	
 begin
-	process(clock, reset, rr1, rr2)
+	q1 <= regs(to_integer(unsigned(rr1)));
+	q2 <= regs(to_integer(unsigned(rr2)));
+	process(clock, reset)
 	begin
 		if reset = '1' then
 			regs <= (others => bit_vector(to_unsigned(0, wordSize)));
@@ -34,7 +34,5 @@ begin
 			end if;
 		end if;
 		regs(regn-1) <= (others => '0');
-		q1 <= regs(to_integer(unsigned(rr1)));
-		q2 <= regs(to_integer(unsigned(rr2)));
 	end process;
 end arch_regfile;
