@@ -20,69 +20,30 @@ entity regfile is
 end regfile;
 
 architecture arch_regfile of regfile is
-	component reg is
-		generic(wordSize: natural := 4);
-		port(
-			clock : in  bit;
-			reset : in  bit;
-			load  : in  bit;
-			d     : in  bit_vector(wordSize-1 downto 0);
-			q     : out bit_vector(wordSize-1 downto 0)	
-		);
-	end component;
-	
-	type mem_tipo is array(0 to regn-2) of bit_vector(wordSize-1 downto 0);
-	signal saidas: mem_tipo; --saida de cada reg 
-	signal loadVector: bit_vector(0 to regn-2); --vetor com os sinais de load de cada reg
-	--signal dVector: mem_tipo;
+	type mem_tipo is array(0 to regn-1) of bit_vector(wordSize-1 downto 0);
+	signal regs: mem_tipo; --registradores
 	
 	signal int_wr: integer;
 	signal int_rr1: integer;
 	signal int_rr2: integer;
 begin
-	cria_regs: for i in 0 to regn-2 generate
-		regs: reg generic map(wordSize) port map(clock, reset, loadVector(i), d, saidas(i));
-	end generate;
-	
 	int_wr <= to_integer(unsigned(wr));
 	int_rr1 <= to_integer(unsigned(rr1));
 	int_rr2 <= to_integer(unsigned(rr2));
 	
-	saidas(regn-1) <= (others => '0');
-	
-	process(clock, loadVector)
-	begin
-		if clock = '1' and clock'event then
-			loadVector <= (others => '0');
-			loadVector(int_wr) <= regWrite;
-			q1 <= saidas(int_rr1);
-			q2 <= saidas(int_rr2);
-		end if;
-
-	end process;
-
-end arch_regfile;
-
-entity reg is
-	generic(wordSize: natural := 4);
-	port(
-		clock : in  bit; --! entrada de clock
-		reset : in  bit; --! clear assincrono
-		load  : in  bit; --! write enable (carga paralela)
-		d     : in  bit_vector(wordSize-1 downto 0); --! entrada
-		q     : out bit_vector(wordSize-1 downto 0)  --! saida	
-	);
-end reg;
-architecture arch_reg of reg is 
-begin
 	process(clock, reset)
 	begin
-		if reset = '1' then 
-			q <= (others => '0');
+		if reset = '1' then
+			regs <= (others => bit_vector(to_unsigned(0, wordSize)));
+			q1 <= regs(int_rr1);
+			q2 <= regs(int_rr2);
 		elsif clock = '1' and clock'event then
-			if load = '1' then
-				q <= d;
+			if regWrite = '1' then
+				regs(int_wr) <= d; 
 			end if;
+			regs(regn-1) <= (others => '0');
+			q1 <= regs(int_rr1);
+			q2 <= regs(int_rr2);
 		end if;
 	end process;
-end arch_reg;
+end arch_regfile;

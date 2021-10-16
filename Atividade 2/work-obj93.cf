@@ -1,9 +1,7 @@
 v 4
-file . "regfile_tb.vhd" "44f255b8e8bcb39a51e5e079079629c584720aa2" "20211015220837.415":
-  entity regfile_tb at 1( 0) + 0 on 217;
-  architecture tb of regfile_tb at 9( 137) + 0 on 218;
-file . "regfile.vhd" "7d46a8449deae09b088bd8fcadb3d2ffa86f90df" "20211015220832.003":
-  entity regfile at 1( 0) + 0 on 213;
-  architecture arch_regfile of regfile at 22( 709) + 0 on 214;
-  entity reg at 66( 1894) + 0 on 215;
-  architecture arch_reg of reg at 76( 2222) + 0 on 216;
+file . "regfile_tb.vhd" "82089dc035d0d1fd6e31c0ffb02067c0fcd8a775" "20211016151810.010":
+  entity regfile_tb at 1( 0) + 0 on 245;
+  architecture tb of regfile_tb at 9( 137) + 0 on 246;
+file . "regfile.vhd" "942e75ab43b6a8534233842d66a39a2a566e4114" "20211016151807.356":
+  entity regfile at 1( 0) + 0 on 243;
+  architecture arch_regfile of regfile at 22( 709) + 0 on 244;
