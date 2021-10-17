@@ -1,7 +1,3 @@
-library ieee;
-use ieee.math_real.ceil;
-use ieee.math_real.log2;
-use ieee.numeric_bit.all;
 entity calc_tb is
 end calc_tb;
 
