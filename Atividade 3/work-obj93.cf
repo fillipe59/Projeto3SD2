@@ -1,9 +1,7 @@
 v 4
-file . "calc_tb.vhd" "a453a5a1c899731677539ea0956651ff68d7e3bc" "20211017033047.402":
-  entity calc_tb at 1( 0) + 0 on 97;
-  architecture tb of calc_tb at 8( 129) + 0 on 98;
-file . "calc.vhd" "1cd1d7542f85eac99de8ae2be12dcee541fb5a16" "20211017033041.354":
-  entity calc at 1( 0) + 0 on 93;
-  architecture arch_calc of calc at 14( 272) + 0 on 94;
-  entity regfile at 56( 1814) + 0 on 95;
-  architecture arch_regfile of regfile at 74( 2448) + 0 on 96;
+file . "calc_tb.vhd" "a453a5a1c899731677539ea0956651ff68d7e3bc" "20211017151856.086":
+  entity calc_tb at 1( 0) + 0 on 113;
+  architecture tb of calc_tb at 8( 129) + 0 on 114;
+file . "calc.vhd" "bc3cbf26e298aaba67601ecbf1b6bbb334479db1" "20211017151840.760":
+  entity calc at 1( 0) + 0 on 111;
+  architecture arch_calc of calc at 12( 220) + 0 on 112;
