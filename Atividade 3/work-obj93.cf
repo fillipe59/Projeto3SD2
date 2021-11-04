@@ -1,7 +1,0 @@
-v 4
-file . "calc_tb.vhd" "dac5c935d3c85eb9340e9d8b427967852243f63a" "20211018202715.707":
-  entity calc_tb at 1( 0) + 0 on 121;
-  architecture tb of calc_tb at 4( 35) + 0 on 122;
-file . "calc.vhd" "aba3724416b8e96d0e636dd6fbcd9510dfd22a45" "20211018202649.345":
-  entity calc at 1( 0) + 0 on 119;
-  architecture arch_calc of calc at 12( 220) + 0 on 120;
