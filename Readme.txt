@@ -4,7 +4,7 @@ Por Fillipe Pinheiro Lima da Silva - 17/10/2021
 Detalhe importente: Estava vedada a utilização da biblioteca ieee.std_logic_1164
 
 Atividade 1:
-Consiste na implementação de um registrador parimetrizável com reset assíncrono e sensível a borda de clock de subida.
+Consiste na implementação de um registrador parametrizável com reset assíncrono e sensível a borda de clock de subida.
 
 Atividade 2:
 Consiste na implementação de um banco de registradores parimetrizável com reset assíncrono e sensível a borda de clock de subida. 
